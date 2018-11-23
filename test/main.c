@@ -50,6 +50,7 @@ int main(void){
     calc_ttc(v_rel,dis_rel);
     prec = accury_calc();
     p_p = pa_sort();
+    int m = 8;
     
         
     int AEB_State = 0;
