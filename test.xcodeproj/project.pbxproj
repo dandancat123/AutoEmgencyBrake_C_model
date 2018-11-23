@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D5192ECE21A5450500237249 /* process.c in Sources */ = {isa = PBXBuildFile; fileRef = D5192ECD21A5450500237249 /* process.c */; };
+		D5192ED021A5476B00237249 /* calc_accy.c in Sources */ = {isa = PBXBuildFile; fileRef = D5192ECF21A5476B00237249 /* calc_accy.c */; };
+		D5192ED221A54AC300237249 /* simfun.c in Sources */ = {isa = PBXBuildFile; fileRef = D5192ED121A54AC300237249 /* simfun.c */; };
+		D5192ED421A56BE400237249 /* calc_dis.c in Sources */ = {isa = PBXBuildFile; fileRef = D5192ED321A56BE400237249 /* calc_dis.c */; };
 		D5DA1D37218FEAAB00770372 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D5DA1D36218FEAAB00770372 /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +27,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D5192EC621A5416D00237249 /* para.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = para.h; sourceTree = "<group>"; };
+		D5192ECD21A5450500237249 /* process.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = process.c; sourceTree = "<group>"; };
+		D5192ECF21A5476B00237249 /* calc_accy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = calc_accy.c; sourceTree = "<group>"; };
+		D5192ED121A54AC300237249 /* simfun.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = simfun.c; sourceTree = "<group>"; };
+		D5192ED321A56BE400237249 /* calc_dis.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = calc_dis.c; sourceTree = "<group>"; };
 		D5DA1D33218FEAAB00770372 /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5DA1D36218FEAAB00770372 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +67,11 @@
 			isa = PBXGroup;
 			children = (
 				D5DA1D36218FEAAB00770372 /* main.c */,
+				D5192EC621A5416D00237249 /* para.h */,
+				D5192ECD21A5450500237249 /* process.c */,
+				D5192ECF21A5476B00237249 /* calc_accy.c */,
+				D5192ED121A54AC300237249 /* simfun.c */,
+				D5192ED321A56BE400237249 /* calc_dis.c */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -120,6 +134,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5DA1D37218FEAAB00770372 /* main.c in Sources */,
+				D5192ED221A54AC300237249 /* simfun.c in Sources */,
+				D5192ED021A5476B00237249 /* calc_accy.c in Sources */,
+				D5192ECE21A5450500237249 /* process.c in Sources */,
+				D5192ED421A56BE400237249 /* calc_dis.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
