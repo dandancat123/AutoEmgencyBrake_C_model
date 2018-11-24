@@ -1,8 +1,11 @@
 /*******计算AEB状态*******/
-
+#include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-/**********************  宏   **********************************/
+/*----------------------------------------------------------------------*/
+/*                                 宏                                   */
+/*----------------------------------------------------------------------*/
 #define Sig_delay_t       0.1           //信号延迟时间
 #define Prs_delay_t       1.0           //升压时间
 #define Pres_init         0.3           //状态3初始占空比
@@ -10,16 +13,30 @@
 #define Ep_acce_frt       8.0           //预期汽车最大制动减速度
 #define SonRes_time       0.5           //驾驶员声音反应时间
 #define HapRes_time       0.5           //驾驶员声音反应时间
-#define dis_time          61            //未来 (61-1)/10=6s时间内的距离差
 #define dis_S0            1.0           //自车与前车距离最小时的距离
 
-/*************************函数原型*************************************/
+
+/*----------------------------------------------------------------------*/
+/*                               函数原型                                */
+/*----------------------------------------------------------------------*/
 int compare(const void *p1, const void *p2);
 void qsort(void *base,size_t nmemb,size_t size,int (*compar)(const void *, const void *));
 float ABS(float);
+float MAX(float, float);
 
-/**********************计算AEB状态函数**********************************/
+
+/*----------------------------------------------------------------------*/
+/*                             AEB状态函数                               */
+/*----------------------------------------------------------------------*/
 int calc_state(float v, float v_rel, float dis_rel){
+    float FrSt_t, v_f;                     //前车停止需要时间，前车车速
+    int dis_time;
+    v_f = v_rel + v;
+    
+    //未来两车都停止的时刻t，乘以10.
+    dis_time = ceil(MAX(v_f/Ep_acce_frt,(v - 0.5 * Ep_acce_ego * Prs_delay_t) / Ep_acce_ego\
+                        + Sig_delay_t + Prs_delay_t)*10);
+    
     float t[dis_time], Sf[dis_time], Sr[dis_time], dis[dis_time], dis_brake, dis_haptic, dis_sound;
     int i, AEB_state;
     
@@ -30,8 +47,7 @@ int calc_state(float v, float v_rel, float dis_rel){
     
     
     
-    float FrSt_t, v_f;                     //前车停止需要时间，前车车速
-    v_f = v_rel + v;
+
     FrSt_t = v_f/Ep_acce_frt;
     for (i = 0; i < dis_time; ++i){        //计算前车以Ep_acce_frt的制动减速度行驶到停止时的行驶距离
         if (t[i] < FrSt_t)
@@ -49,7 +65,7 @@ int calc_state(float v, float v_rel, float dis_rel){
         else if (t[i] < (Sig_delay_t + Prs_delay_t))
             Sr[i] = v * Sig_delay_t + v * (t[i] - Sig_delay_t) - Ep_acce_ego * pow((t[i] - Sig_delay_t), 3.0)/(6.0 * Prs_delay_t);
         else if (t[i] < (Sig_delay_t + Prs_delay_t + (v - 0.5*Ep_acce_ego*Prs_delay_t)/Ep_acce_ego)){
-            Sr[i] = v * (Sig_delay_t + Prs_delay_t) + pow(Prs_delay_t,2.0)/6.0 + \
+            Sr[i] = v * (Sig_delay_t + Prs_delay_t) - Ep_acce_ego * pow(Prs_delay_t,2.0)/6.0 + \
                  (v - 0.5 * Ep_acce_ego * Prs_delay_t) *  (t[i] - Sig_delay_t - Prs_delay_t)\
             - 0.5 * Ep_acce_ego * pow((t[i] - Sig_delay_t - Prs_delay_t),2);}
         else
@@ -79,7 +95,7 @@ int calc_state(float v, float v_rel, float dis_rel){
         AEB_state = 1;
     else
         AEB_state = 0 ;
-    //printf("最小制动距离：%8.2f\n触觉报警距离：%8.2f\n声音报警距离：%8.2f\n\n",dis_brake,dis_haptic,dis_sound);
+    printf("最小制动距离：%5.2f m\n触觉报警距离：%5.2f m\n声音报警距离：%5.2f m\n\n",dis_brake,dis_haptic,dis_sound);
     
     return AEB_state;
 }
