@@ -18,7 +18,8 @@ extern float Ep, TTC , **p_p;
 //pointer to pointer 指向指针的指针，返回的是一个排序好的压力和加速度数组。
 
 extern float * pv , *pl , *pp , *pa , *p_t ;
-//pointer to velocity,pointer to location, pointer to pressure, pointer to acceleration, pointer to ttc.
+/*pointer to velocity,pointer to location, pointer to pressure,
+  pointer to acceleration, pointer to ttc.*/
 
 extern float v, dis_rel, dis_min, prec , acce_calc, acce_meas, v_rel, pres_now, pres_max, pres_min, ttime;
 /*变量依次为：本车速度，相对距离，瞬时最小距离，距离公式精确度，计算减速度，实际测量减速度,

@@ -28,7 +28,7 @@ void vd_init(void){           //velocity&distance_initialize()
 /*                          速度延迟函数                              */
 /*------------------------------------------------------------------*/
 
-//得到一个速度/距离值，存入数组，以前值前移
+//得到一个速度值，存入数组，以前值前移
 void v_delay(float v) {
     int i;
     for (i = (calc_t - 1); i > -1; i--) {
@@ -43,7 +43,7 @@ void v_delay(float v) {
 /*                          距离延迟函数                              */
 /*------------------------------------------------------------------*/
 
-//得到一个速度/距离值，存入数组，以前值前移
+//得到一个位置值，存入数组，以前值前移
 void l_delay(float dis) {
     int i;
     for (i = (calc_t - 1); i > -1; i--) {
@@ -58,7 +58,7 @@ void l_delay(float dis) {
 /*                          压力延迟函数                              */
 /*------------------------------------------------------------------*/
 
-//得到一个速度/距离值，存入数组，以前值前移
+//得到一个压力值，存入数组，以前值前移
 void pres_delay(float pres) {
     int i;
     for (i = (calc_t - 1); i > -1; i--) {
@@ -107,8 +107,8 @@ float **pa_sort(void){
         acce_s[i] = acce_d[i];
         //printf("%.2f  ",pres_s[i]);                            //测试行
     }
-    qsort(pres_s, calc_t, sizeof(float), compare);  //复制原压力数组，并依次排序好
-    qsort(acce_s, calc_t, sizeof(float), compare);  //同上
+    qsort(pres_s, calc_t, sizeof(float), compare);  //复制压力数组，并依次排序好
+    qsort(acce_s, calc_t, sizeof(float), compare);  //复制加速度数组，并依次排序好
     /*for (i=0 ; i < calc_t; i++){
         printf("%.2f  ",pres_s[i]);  //测试行
     }*/
