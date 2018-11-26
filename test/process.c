@@ -13,7 +13,7 @@ void calc_ttc(float v_rel,float dis_rel){
         *p_t = 20;
     else                                                //
         *p_t = (-1) * dis_rel / v_rel;
-    printf("\n此时TTC的值：%5.2f s   \n",*p_t);
+    //printf("\n此时TTC的值：%5.2f s   \n",*p_t);
 
 }
 /*----------------------------------------------------------------------*/
@@ -53,18 +53,18 @@ float calc_ep(void){
             Ep_add = 0.4;
         else
             Ep_add = 0.0;
-        printf("压力稳定：1\n");
+        //printf("压力稳定：1\n");
     }
     else if (TTC < 0.8) {                             //0.8秒的TTC，强制压力升到最大值
         Ep_add = 0.4;
-        printf("TTC过小：2\n");
+        //printf("TTC过小：2\n");
     }
     else{
         Ep_add = 0.0;
-        printf("压力不稳定或速度过低：3\n");
+        //printf("压力不稳定或速度过低：3\n");
     }
-    printf("最小压力平均值：%.1f\n最大压力平均值：%.1f\n最近压力平均值：%.1f\n", mean_array(ps, 0, 19), mean_array(ps, calc_t-21, calc_t-1), mean_array(pp, 0, 9));
-    printf("增加的制动信号：%.1f   \n",Ep_add);
+    //printf("最小压力平均值：%.1f\n最大压力平均值：%.1f\n最近压力平均值：%.1f\n", mean_array(ps, 0, 19), mean_array(ps, calc_t-21, calc_t-1), mean_array(pp, 0, 9));
+    //printf("增加的制动信号：%.1f   \n",Ep_add);
     return Ep_add;
 }
     

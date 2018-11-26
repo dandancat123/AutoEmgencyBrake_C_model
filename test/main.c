@@ -13,6 +13,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include "para.h"
+#include <time.h>
 
 /*------------------------------------------------------------------*/
 /*                          变量定义                                  */
@@ -33,17 +34,21 @@ void v_delay(float);
 void l_delay(float);
 void pres_delay(float);
 void acce_delay(void);
-void printpv(void);
+void printpv(void);              //打印存储值函数
 void calc_ttc(float,float);
 float **pa_sort(void);
 float pres_p(void);
 float accury_calc(void);
+int MAX_int(int a, int b);
 
 /*------------------------------------------------------------------*/
 /*                           主函数                                  */
 /*------------------------------------------------------------------*/
 //整个执行过程是什么？每个采样时间点，新的信号值进入，重新执行一遍main()么？
 int main(void){
+    /*clock_t begin, end;
+    double cost;                               //计时-开始
+    begin = clock();*/
     
     vd_init();                                 //开始时，平均距离速度初始化
     //得到新的速度，距离，压力，将该值存入数组;并计算加速度数组
@@ -52,26 +57,37 @@ int main(void){
         l_delay(20);
         pres_delay(1.4);
         acce_delay();
-        printpv();
+        //printpv();
         
         calc_ttc(-3,3);
         prec = accury_calc();
         p_p = pa_sort();
         
-        int AEB_State ;
-        //AEB_State = calc_state(v, v_rel, dis_rel);     //计算AEB状态
-        AEB_State = calc_state(20.0, -3.0, 3.0);
-        printf("AEB状态：%d\n",AEB_State);
+        int AEB_State_1 ;                                //采样时间计算得到的AEB状态.
+        int AEB_S_array[2] = {0,0};                      //AEB_State_array.
+        int * p_aeb_s = AEB_S_array;                     //pointer to AEB State Array.
+        //AEB_State_1 = calc_state(v, v_rel, dis_rel);     //计算AEB状态.
+        AEB_State_1 = calc_state(20.0, -3.0, 3.0);
+        printf("AEB状态：%d\n",AEB_State_1);
+        *(p_aeb_s + 1) = *p_aeb_s;
+        *p_aeb_s =AEB_State_1;
         
-        if (AEB_State == 0)
+        //为保持压力只增不减的函数
+        if (MAX_int(*p_aeb_s, *(p_aeb_s+1)) == 0)
             ;
-        else if (AEB_State == 1)
+        else if (MAX_int(*p_aeb_s, *(p_aeb_s+1)) == 1)
             ;
-        else if (AEB_State == 2)
+        else if (MAX_int(*p_aeb_s, *(p_aeb_s+1)) == 2)
             ;
         else
             Ep = 0.3 + pres_p();
     }
+    
+    /*end = clock();                                          //计时-结束
+    cost = (double)(end - begin)/CLOCKS_PER_SEC*1000;
+    printf("constant CLOCKS_PER_SEC is: %ld, time cost is: %lf msecs\n", CLOCKS_PER_SEC/1000, cost);*/
+
+    
     return 0;
 }
 

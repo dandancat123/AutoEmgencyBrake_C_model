@@ -95,7 +95,7 @@ int calc_state(float v, float v_rel, float dis_rel){
         AEB_state = 1;
     else
         AEB_state = 0 ;
-    printf("最小制动距离：%5.2f m\n触觉报警距离：%5.2f m\n声音报警距离：%5.2f m\n\n",dis_brake,dis_haptic,dis_sound);
+    //printf("最小制动距离：%5.2f m\n触觉报警距离：%5.2f m\n声音报警距离：%5.2f m\n\n",dis_brake,dis_haptic,dis_sound);
     
     return AEB_state;
 }
