@@ -1,6 +1,6 @@
 /*******计算距离公式准确度*******/
 #include <stdio.h>
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <math.h>
 #include "para.h"
 
@@ -9,8 +9,9 @@
 /*------------------------------------------------------------------*/
 /*                          函数原型                                 */
 /*------------------------------------------------------------------*/
-int compare(const void * a, const void * b);
-void qsort(void *base,size_t nmemb,size_t size,int (*compar)(const void *, const void *));
+//int compare(const void * a, const void * b);                         //stdlib排序函数
+//void qsort(void *base,size_t nmemb,size_t size,int (*compar)(const void *, const void *));
+void sort(float *a, int l);    //自编排序函数
 float mean_array(float * p, int n, int m);
 
 /*------------------------------------------------------------------*/
@@ -118,8 +119,11 @@ float **pa_sort(void){
         acce_s[i] = acce_d[i];
         //printf("%.2f  ",pres_s[i]);                            //测试行
     }
-    qsort(pres_s, calc_t, sizeof(float), compare);  //复制压力数组，并依次排序好
-    qsort(acce_s, calc_t, sizeof(float), compare);  //复制加速度数组，并依次排序好
+    //qsort(pres_s, calc_t, sizeof(float), compare);  //复制压力数组，并依次排序好
+    //qsort(acce_s, calc_t, sizeof(float), compare);  //复制加速度数组，并依次排序好
+    sort(pres_s, calc_t);
+    sort(acce_s, calc_t);
+    
     /*for (i=0 ; i < calc_t; i++){
         printf("%.2f  ",pres_s[i]);  //测试行
     }*/

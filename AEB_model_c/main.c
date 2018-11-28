@@ -12,7 +12,7 @@
 /*------------------------------------------------------------------*/
 #include <stdio.h>
 #include <math.h>
-#include <stdlib.h>
+//#include <stdlib.h>
 #include "para.h"
 #include <time.h>
 
@@ -93,7 +93,7 @@ int main(void){
     /*end = clock();                                          //计时-结束
     cost = (double)(end - begin)/CLOCKS_PER_SEC*1000;
     printf("constant CLOCKS_PER_SEC is: %ld, time cost is: %lf msecs\n", CLOCKS_PER_SEC/1000, cost);*/
-    //printpv(pl);                                           //打印存储的值
+    printpv(pl);                                           //打印存储的值
     
     
     return 0;

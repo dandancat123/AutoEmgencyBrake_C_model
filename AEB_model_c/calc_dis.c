@@ -1,6 +1,6 @@
 /*******计算AEB状态*******/
 #include <stdio.h>
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <math.h>
 
 /*----------------------------------------------------------------------*/
@@ -21,6 +21,8 @@
 /*----------------------------------------------------------------------*/
 int compare(const void *p1, const void *p2);
 void qsort(void *base,size_t nmemb,size_t size,int (*compar)(const void *, const void *));
+//stdlib.h排序函数
+void sort(float *a, int l);    //自编排序函数
 float ABS(float);
 float MAX(float, float);
 
@@ -30,10 +32,10 @@ float MAX(float, float);
 /*----------------------------------------------------------------------*/
 int calc_state(float v, float v_rel, float dis_rel){
     float FrSt_t, v_f;                     //前车停止需要时间，前车车速
-    int dis_time;
+    int dis_time;                          //未来两车都停止的时刻t，乘以10.
     v_f = v_rel + v;
     
-    //未来两车都停止的时刻t，乘以10.
+    
     dis_time = ceil(MAX(v_f/Ep_acce_frt,(v - 0.5 * Ep_acce_ego * Prs_delay_t) / Ep_acce_ego\
                         + Sig_delay_t + Prs_delay_t)*10);
     
@@ -78,10 +80,12 @@ int calc_state(float v, float v_rel, float dis_rel){
         //printf("%7.2f  %7.2f\n",t[i],dis[i]);       //测试行
     }
     
-    qsort (dis, dis_time , sizeof(float), compare);   //将距离差从小到大排序
+    //qsort (dis, dis_time , sizeof(float), compare);   //将距离差从小到大排序
     /*for (i = 0; i < dis_time; ++i){
         printf("%7.2f\n",dis[i]);
     }*/                                              //测试行
+    
+    sort(dis, dis_time);
     
     
     dis_brake = dis[0]*(-1) + dis_S0;                                     //最小制动距离
