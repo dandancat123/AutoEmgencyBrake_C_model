@@ -85,11 +85,22 @@ void acce_delay(void){
 /*------------------------------------------------------------------*/
 /*                          查看存储函数                              */
 /*------------------------------------------------------------------*/
-void printpv(void){
+void printpv(float * pointer){
     int i;
-    printf("存储的值为：");
+    
+    if (pointer == pv)
+        printf("速度存储的值为：");
+    else if (pointer == pl)
+        printf("距离存储的值为：");
+    else if (pointer == pp)
+        printf("压力存储的值为：");
+    else if (pointer == pa)
+        printf("加速度存储的值为：");
+    else
+        printf("error!");
+
     for (i=0; i<calc_t; i++)
-        printf("%.2f  ",*(pp+i));                              //查看pv速度 pl距离 pp压力 pa加速度存储值
+        printf("%.2f  ",*(pointer+i));                              //查看pv速度 pl距离 pp压力 pa加速度存储值
     printf("\n");
 }
 

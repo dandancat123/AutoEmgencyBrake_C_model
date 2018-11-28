@@ -21,7 +21,7 @@ extern float * pv , *pl , *pp , *pa , *p_t ;
 /*pointer to velocity,pointer to location, pointer to pressure,
   pointer to acceleration, pointer to ttc.*/
 
-extern float v, dis_rel, dis_min, prec , acce_calc, acce_meas, v_rel, pres_now, pres_max, pres_min, ttime;
+extern float v, dis_rel, dis_min, prec , acce_calc, acce_meas, v_rel, pres_now, pres_max, pres_min;
 /*变量依次为：本车速度，相对距离，瞬时最小距离，距离公式精确度，计算减速度，实际测量减速度,
  相对速度, 本车速度+相对速度 = 前车速度, 现在压力， 压力最大值， 压力最小值， */
 
