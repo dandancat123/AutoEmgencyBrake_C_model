@@ -32,7 +32,7 @@
 		D5192ECF21A5476B00237249 /* calc_accy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = calc_accy.c; sourceTree = "<group>"; };
 		D5192ED121A54AC300237249 /* simfun.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = simfun.c; sourceTree = "<group>"; };
 		D5192ED321A56BE400237249 /* calc_dis.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = calc_dis.c; sourceTree = "<group>"; };
-		D5DA1D33218FEAAB00770372 /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5DA1D33218FEAAB00770372 /* AEB_Model-C */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "AEB_Model-C"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5DA1D36218FEAAB00770372 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,7 +50,7 @@
 		D5DA1D2A218FEAAB00770372 = {
 			isa = PBXGroup;
 			children = (
-				D5DA1D35218FEAAB00770372 /* test */,
+				D5DA1D35218FEAAB00770372 /* AEB_model_c */,
 				D5DA1D34218FEAAB00770372 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,12 +58,12 @@
 		D5DA1D34218FEAAB00770372 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D5DA1D33218FEAAB00770372 /* test */,
+				D5DA1D33218FEAAB00770372 /* AEB_Model-C */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D5DA1D35218FEAAB00770372 /* test */ = {
+		D5DA1D35218FEAAB00770372 /* AEB_model_c */ = {
 			isa = PBXGroup;
 			children = (
 				D5DA1D36218FEAAB00770372 /* main.c */,
@@ -73,15 +73,15 @@
 				D5192ED121A54AC300237249 /* simfun.c */,
 				D5192ED321A56BE400237249 /* calc_dis.c */,
 			);
-			path = test;
+			path = AEB_model_c;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D5DA1D32218FEAAB00770372 /* test */ = {
+		D5DA1D32218FEAAB00770372 /* AEB_Model-C */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D5DA1D3A218FEAAB00770372 /* Build configuration list for PBXNativeTarget "test" */;
+			buildConfigurationList = D5DA1D3A218FEAAB00770372 /* Build configuration list for PBXNativeTarget "AEB_Model-C" */;
 			buildPhases = (
 				D5DA1D2F218FEAAB00770372 /* Sources */,
 				D5DA1D30218FEAAB00770372 /* Frameworks */,
@@ -91,9 +91,9 @@
 			);
 			dependencies = (
 			);
-			name = test;
+			name = "AEB_Model-C";
 			productName = test;
-			productReference = D5DA1D33218FEAAB00770372 /* test */;
+			productReference = D5DA1D33218FEAAB00770372 /* AEB_Model-C */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -111,7 +111,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D5DA1D2E218FEAAB00770372 /* Build configuration list for PBXProject "test" */;
+			buildConfigurationList = D5DA1D2E218FEAAB00770372 /* Build configuration list for PBXProject "AEB_Model-C" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -123,7 +123,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D5DA1D32218FEAAB00770372 /* test */,
+				D5DA1D32218FEAAB00770372 /* AEB_Model-C */,
 			);
 		};
 /* End PBXProject section */
@@ -266,7 +266,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D5DA1D2E218FEAAB00770372 /* Build configuration list for PBXProject "test" */ = {
+		D5DA1D2E218FEAAB00770372 /* Build configuration list for PBXProject "AEB_Model-C" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5DA1D38218FEAAB00770372 /* Debug */,
@@ -275,7 +275,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D5DA1D3A218FEAAB00770372 /* Build configuration list for PBXNativeTarget "test" */ = {
+		D5DA1D3A218FEAAB00770372 /* Build configuration list for PBXNativeTarget "AEB_Model-C" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5DA1D3B218FEAAB00770372 /* Debug */,
