@@ -75,7 +75,7 @@ int main(void){
         int * p_aeb_s = AEB_S_array;                         //pointer to AEB State Array.
         //AEB_State_now = calc_state(v, v_rel, dis_rel);     //计算AEB状态.
         AEB_State_now = calc_state(20.0, -3.0, 3.0);
-        printf("AEB状态：%d\n",AEB_State_now);
+        //printf("AEB状态：%d\n",AEB_State_now);
         *(p_aeb_s + 1) = *p_aeb_s;
         *p_aeb_s =AEB_State_now;
         
@@ -93,7 +93,7 @@ int main(void){
     /*end = clock();                                          //计时-结束
     cost = (double)(end - begin)/CLOCKS_PER_SEC*1000;
     printf("constant CLOCKS_PER_SEC is: %ld, time cost is: %lf msecs\n", CLOCKS_PER_SEC/1000, cost);*/
-    printpv(pl);                                           //打印存储的值
+    //printpv(pl);                                           //打印存储的值
     
     
     return 0;
