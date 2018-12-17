@@ -33,9 +33,8 @@ float MAX(float, float);
 int calc_state(float v, float v_rel, float dis_rel){
     float FrSt_t, v_f;                     //前车停止需要时间，前车车速
     int dis_time;                          //未来两车都停止的时刻t，乘以10.
-    v_f = v_rel + v;
     
-    
+    v_f = v_rel + v;                      //前车车速 = 相对车速 + 车速
     dis_time = ceil(MAX(v_f/Ep_acce_frt,(v - 0.5 * Ep_acce_ego * Prs_delay_t) / Ep_acce_ego\
                         + Sig_delay_t + Prs_delay_t)*10);
     
@@ -46,8 +45,6 @@ int calc_state(float v, float v_rel, float dis_rel){
     t[i] = 0.1 * i;
     Sr[i] = Sf[i] = 0.0;
     }
-    
-    
     
 
     FrSt_t = v_f/Ep_acce_frt;

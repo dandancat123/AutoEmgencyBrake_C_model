@@ -121,8 +121,8 @@ float **pa_sort(void){
     }
     //qsort(pres_s, calc_t, sizeof(float), compare);  //复制压力数组，并依次排序好
     //qsort(acce_s, calc_t, sizeof(float), compare);  //复制加速度数组，并依次排序好
-    sort(pres_s, calc_t);
-    sort(acce_s, calc_t);
+    sort(pres_s, calc_t);    //复制压力数组，并依次排序好
+    sort(acce_s, calc_t);    //复制加速度数组，并依次排序好
     
     /*for (i=0 ; i < calc_t; i++){
         printf("%.2f  ",pres_s[i]);  //测试行

@@ -26,6 +26,7 @@ float mean_array(float * p, int n, int m);
 
 float EP[2] = {0.0,0.0};
 //第一个值为本次采样后得到的期望占空比，第二个值为上次采样后得到的期望占空比
+
 float Ep_add,* p_ep = EP;                                      //pointer to expect pressure.
 
 
@@ -42,9 +43,13 @@ float calc_ep(void){
         (mean_array(ps, calc_t-21, calc_t-1) < mean_array(pp, 0, 9)*1.2) &&\
         mean_array(pp, 0, 9) > 5  && v_ms > 1.0){
         
-        s_m = dis_rel + prec;                           //修正后的理论距离 = 实际距离 + 模型准确度
+        s_m = dis_rel + prec;
+        //修正后的理论距离 = 实际距离 + 模型准确度
+        
         a_e = 2*pow((pow(acce_ms,2.0) + 6*acce_ms*s_m - 6*acce_ms*v_ms + 36*pow(s_m, 2.0) - 36*s_m*v_ms + \
-                     12*pow(v_ms, 2.0)),0.5) + 6*v_ms -12*s_m - 2*acce_ms;     //距离修正后需增加的加速度
+                     12*pow(v_ms, 2.0)),0.5) + 6*v_ms -12*s_m - 2*acce_ms;
+        //距离修正后需增加的加速度
+        
         if (round(a_e) >= 1  && round(a_e) < 4)
             Ep_add = 0.1*round(a_e);
         else if (round(a_e)<1 && round(a_e)>=0)
@@ -68,7 +73,8 @@ float calc_ep(void){
     return Ep_add;
 }
     
-float pres_p(void){                        //根据得到的压力，计算应该增加的加速度，并与上一次采样的结果对比，输出较大值。
+float pres_p(void){
+    //根据得到的压力，计算应该增加的加速度，并与上一次采样的结果对比，输出较大值。
     float ep_add;
     ep_add = calc_ep();
     *(p_ep+1) = *p_ep;
